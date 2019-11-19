@@ -24,6 +24,11 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 2. The inputs from Result 1 are used in the search to look at the dates for the earliest and latest emails.  If the earliest we have seen an incoming IP address was *within the last day* of our search period (1/4/2017 - 2/1/2017), it means this is the first time we've seen the IP address, and it may qualify as anomalous (Result 2).
 
+`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND NOT incoming_address="10.0.0.0/8" | where ( ( time > strptime("1/4/2017","%m/%d/%Y") ) AND ( time < strptime("2/1/2017","%m/%d/%Y") ) )`
+
+![this is it](from_date_to_date.png)
+
+
 3. The inputs from Result 2 are used in the search to create a *table* with the incoming IP addresses, the earliest date/time and the latest date/time.
 
 
