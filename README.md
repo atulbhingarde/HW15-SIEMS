@@ -28,8 +28,11 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 ![this is it](from_date_to_date.png)
 
+3.The inputs from Result 2 are used in the search to create a *table* with the incoming IP addresses, the earliest date/time and the latest date/time.
 
-3. The inputs from Result 2 are used in the search to create a *table* with the incoming IP addresses, the earliest date/time and the latest date/time.
+`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender=*@buttercupgames.com AND incoming_address != "10.0.0.0/8" | stats earliest(time) as earliest latest(time) as latest by incoming_address | table incoming_address, earliest, latest | convert ctime(earliest) ctime(latest)`
+
+![this is it](table_1.png)
 
 
 ### Things to Capture About the Incident
