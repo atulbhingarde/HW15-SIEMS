@@ -56,7 +56,7 @@ _** there is no attachment to the email in the above incidence **_
 
 ### New Commands
 
-This is a challenging exercise, but we'll give you some help along the way.  The exercise use commands from the class lessons such as `relational operators`, `pipes`, `wildcards`, `tables`, `reports`,  and `alerts`. 
+This is a challenging exercise, but we'll give you some help along the way.  The exercise use commands from the class lessons such as `relational operators`, `pipes`, `wildcards`, `tables`, `reports`,  and `alerts`.
 
 The exercise will require that you also learn some **new** Splunk functions. You will use the Splunk reference material to learn the new commands.  RTM is a necessary skill for a security professional as threats are continually appearing.
 
