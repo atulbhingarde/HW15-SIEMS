@@ -130,10 +130,13 @@ The search has three parts:
 
 	* Try it in Splunk.
 
+	`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"`
 
-**Part 2:** 
+![this is it](images/selected_1.png)
 
-* Now locate emails that satisfy the criteria for suspicious emails. Here we will use the **stats** command with the *earliest* and *latest* times *by* incoming IP address. 
+**Part 2:**
+
+* Now locate emails that satisfy the criteria for suspicious emails. Here we will use the **stats** command with the *earliest* and *latest* times *by* incoming IP address.
 
 	* Hint: This uses a `pipe` command.
 
@@ -144,6 +147,10 @@ The search has three parts:
 	* Check the earliest time value = `1483511846` at https://www.epochconverter.com/
 	 
 	
+	`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"| stats earliest(time) AS mtime by incoming_address | convert ctime(mtime)`
+	
+	![this is it](images/selected_2.png)
+
 **Part 3:** 
 
 * We are now in the last part of the search.  Place the output of the **stats** command in a **table** showing the `incoming IP address`, and the `earliest date/time` and `latest date/time` in human-readable form.
