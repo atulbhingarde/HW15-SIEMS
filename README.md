@@ -183,7 +183,11 @@ Now look at the results and collect information for the incident report.
 
 	
 *  Where there any **Attachments**?
+`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender=*@buttercupgames.com AND incoming_address != "10.0.0.0/8"  incoming_address="74.207.253.34"`
 
+![this is it](images/incidence_1.png)
+
+`_** there is no attachment to the email in the above incidence **_`
 	
 ## Create a Cron Alert
 
