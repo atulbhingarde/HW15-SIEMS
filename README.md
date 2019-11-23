@@ -52,7 +52,7 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 ![this is it](images/incidence_1.png)
 
-_** there is no attachment to the email in the above incidence **_
+`_** there is no attachment to the email in the above incidence **_`
 
 ### New Commands
 
@@ -71,7 +71,8 @@ The exercise will require that you also learn some **new** Splunk functions. You
 	```bash
 		sourcetype=access_* (status=4* OR status=5*) | stats count by status
 	```
-
+##`source="access_30DAY.log" host="cyber-security-ubuntu" sourcetype="access_combined_wcookie" status="4*" OR status="5*"`
+![this is it](images/access_log_400_500.png)
 #### Time Functions - They Work with the 'stats' function.
 
 * We also need to gather the *earliest* and *latest* times from the raw data so we will use the **earliest** and **latest** time functions. 
@@ -117,12 +118,11 @@ Write down **each part** of the search and then try it in Splunk.
 
 2. Locate the fields of interest in **Interesting Fields** and place them in **Selected Fields**. For example **incoming_address, time**.
 
-
-## Create the Search 
+## Create the Search
 
 The search has three parts:
 
-**Part 1:** 
+**Part 1:**
 
 * First, create a search where the Sender is *anyone* from @buttercupgames.com but the incoming IP address is NOT in the domain.
 
