@@ -8,7 +8,7 @@ You are investigating **phishing attacks** at buttercupgames.  Phishers often tr
 
 The buttercupgames domain name is **buttercupgames.com** (e.g., t1578@buttercupgames.com) and the incoming IP address is **10.0.0.0/8**.
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND incoming_address="10.0.0.0/8"`
-![this is it](images/buttercupgames.png)
+![this_is_it](images/buttercupgames.png)
 
 ### Your Goal ß
 
@@ -18,7 +18,7 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 1. Your search will look for *Senders* that have an email address in the buttercupgames domain but are NOT using the 10.0.0.0/8 incoming IP address (Result 1).
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND NOT incoming_address="10.0.0.0/8"`
-![this is it](images/not_in_range.png)
+![this_is_it](images/not_in_range.png)
 
 2. The inputs from Result 1 are used in the search to look at the dates for the earliest and latest emails.  If the earliest we have seen an incoming IP address was *within the last day* of our search period (1/4/2017 - 2/1/2017), it means this is the first time we've seen the IP address, and it may qualify as anomalous (Result 2).
 
@@ -30,7 +30,7 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender=*@buttercupgames.com AND incoming_address != "10.0.0.0/8" | stats earliest(time) as earliest latest(time) as latest by incoming_address | table incoming_address, earliest, latest | convert ctime(earliest) ctime(latest)`
 
-![this is it](images/table_1.png)
+![this_is_it](images/table_1.png)
 
 ### Things to Capture About the Incident
 
@@ -48,7 +48,7 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender=*@buttercupgames.com AND incoming_address != "10.0.0.0/8"  incoming_address="74.207.253.34"`
 
-![this is it](images/incidence_1.png)
+![this_is_it](images/incidence_1.png)
 
 `_** there is no attachment to the email in the above incidence **_`
 
@@ -72,7 +72,7 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
 ##### `source="access_30DAY.log" host="cyber-security-ubuntu" sourcetype="access_combined_wcookie" status="4*" OR status="5*"`
 
-![this is it](images/access_log_400_500.png)
+![this_is_it](images/access_log_400_500.png)
 
 #### Time Functions - They Work with the 'stats' function.
 
@@ -131,7 +131,7 @@ The search has three parts:
 
  `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"`
 
-![this is it](images/selected_1.png)
+![this_is_it](images/selected_1.png)
 
 **Part 2:**
 
@@ -148,7 +148,7 @@ The search has three parts:
 	
 	`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"| stats earliest(time) AS mtime by incoming_address | convert ctime(mtime)`
 	
-	![this is it](images/selected_2.png)
+![this_is_it](images/selected_2.png)
 
 **Part 3:** 
 
@@ -224,7 +224,7 @@ Configure the alert as follows:
 
 ### View the Alert
 
-![alert in action](images/cron.png)
+![alert_in_action](images/cron.png)
 
 * View the Alert from the **App** bar
 
@@ -239,6 +239,7 @@ Configure the alert as follows:
 ### Disable the Alert
 
 * Disable the Alert after 10 entries.
+
 ![alert in action](images/disable_alert_after_10.png)
 
 `Congratulations ....Homework Complete!`
