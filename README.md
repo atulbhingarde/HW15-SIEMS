@@ -1,11 +1,10 @@
-## SIEMs Homework Challenge
+# SIEMs Homework Challenge
 
-
-### Background
+## Background
 
 You are investigating **phishing attacks** at buttercupgames.  Phishers often try to send emails where the **from address** uses a company's domain name.
 
-### Facts 
+### Facts
 
 The buttercupgames domain name is **buttercupgames.com** (e.g., t1578@buttercupgames.com) and the incoming IP address is **10.0.0.0/8**.
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND incoming_address="10.0.0.0/8"`
@@ -15,7 +14,7 @@ The buttercupgames domain name is **buttercupgames.com** (e.g., t1578@buttercupg
 
 Find possible **anomalies** that may indicate a phishing attack.
 
-### Search Criteria 
+### Search Criteria
 
 1. Your search will look for *Senders* that have an email address in the buttercupgames domain but are NOT using the 10.0.0.0/8 incoming IP address (Result 1).
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND NOT incoming_address="10.0.0.0/8"`
@@ -32,7 +31,6 @@ Find possible **anomalies** that may indicate a phishing attack.
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender=*@buttercupgames.com AND incoming_address != "10.0.0.0/8" | stats earliest(time) as earliest latest(time) as latest by incoming_address | table incoming_address, earliest, latest | convert ctime(earliest) ctime(latest)`
 
 ![this is it](images/table_1.png)
-
 
 ### Things to Capture About the Incident
 
@@ -68,27 +66,30 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
 * Example: We want to display the number (count) of `400` or `500` type return codes from a web server.  The codes are stored in the `status` field.
 
-	```bash
-		sourcetype=access_* (status=4* OR status=5*) | stats count by status
-	```
-##`source="access_30DAY.log" host="cyber-security-ubuntu" sourcetype="access_combined_wcookie" status="4*" OR status="5*"`
+##### ```bash
+
+  sourcetype=access_* (status=4* OR status=5*) | stats count by status
+
+##### `source="access_30DAY.log" host="cyber-security-ubuntu" sourcetype="access_combined_wcookie" status="4*" OR status="5*"`
+
 ![this is it](images/access_log_400_500.png)
+
 #### Time Functions - They Work with the 'stats' function.
 
-* We also need to gather the *earliest* and *latest* times from the raw data so we will use the **earliest** and **latest** time functions. 
+* We also need to gather the *earliest* and *latest* times from the raw data so we will use the **earliest** and **latest** time functions.
 
 * Splunk Reference: https://docs.splunk.com/Documentation/Splunk/7.2.4/SearchReference/Timefunctions
 
-* Examples: 
+* Examples:
 
-	```bash
-		earliest(time) as earliest
+ ```bash
+  earliest(time) as earliest
     ```
-	
-	```bash
-		latest(time) as latest
-    ``` 
- 
+
+ ```bash
+  latest(time) as latest
+    ```
+
 #### Conversion Functions
 
 * We will output the `earliest` and `latest` *date* and *time* in a human-readable format.  The **convert** command converts field values in your search results into numerical values.
@@ -99,15 +100,13 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
 * Epoch Time: https://www.computerhope.com/jargon/e/epoch.htm
 
-* Examples: 
+* Examples:
 
-	```bash
-		convert ctime(earliest)
-	```
-	
-	```bash
-		convert ctime(latest)
-	```
+ ```bash
+  convert ctime(earliest)
+
+ ```bash
+  convert ctime(latest)
 
 
 ## Let's Start
@@ -126,11 +125,11 @@ The search has three parts:
 
 * First, create a search where the Sender is *anyone* from @buttercupgames.com but the incoming IP address is NOT in the domain.
 
-	* Hint: This section uses a `wildcard` and `relational operator`.
+ * Hint: This section uses a `wildcard` and `relational operator`.
 
-	* Try it in Splunk.
+ * Try it in Splunk.
 
-	`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"`
+ `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"`
 
 ![this is it](images/selected_1.png)
 
@@ -221,9 +220,11 @@ Configure the alert as follows:
 
 	* Severity = `Critical`
 
-* `Save` the Alert	
+* `Save` the Aler
 
 ### View the Alert
+
+![alert in action](images/cron.png)
 
 * View the Alert from the **App** bar
 
@@ -233,15 +234,11 @@ Configure the alert as follows:
 
 * Check the `Activity -> Triggered Alert` list.
 
-### Disable the Alert 
+![alert in action](images/alert_in_action.png)
+
+### Disable the Alert
 
 * Disable the Alert after 10 entries.
+![alert in action](images/disable_alert_after_10.png)
 
-
-Congratulations ....Homework Complete!	
-
-
-
-
-
-
+`Congratulations ....Homework Complete!`
