@@ -108,10 +108,9 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
 * Examples:
 
- ```bash
+ 
   convert ctime(earliest)
 
- ```bash
   convert ctime(latest)
 
 
