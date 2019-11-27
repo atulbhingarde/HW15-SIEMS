@@ -70,7 +70,7 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
 * Example: We want to display the number (count) of `400` or `500` type return codes from a web server.  The codes are stored in the `status` field.
 
-##### ```bash
+##### 
 
   sourcetype=access_* (status=4* OR status=5*) | stats count by status
 
@@ -88,13 +88,12 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
 * Examples:
 
- ```bash
-  earliest(time) as earliest
-    ```
 
- ```bash
-  latest(time) as latest
-    ```
+  earliest(time) as earliest
+  
+
+
+ latest(time) as latest
 
 #### Conversion Functions
 
