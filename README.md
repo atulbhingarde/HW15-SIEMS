@@ -7,7 +7,9 @@ You are investigating **phishing attacks** at buttercupgames.  Phishers often tr
 ### Facts
 
 The buttercupgames domain name is **buttercupgames.com** (e.g., t1578@buttercupgames.com) and the incoming IP address is **10.0.0.0/8**.
+
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND incoming_address="10.0.0.0/8"`
+
 ![this_is_it](images/buttercupgames.png)
 
 ### Your Goal ß
@@ -17,7 +19,9 @@ Find possible **anomalies** that may indicate a phishing attack.
 ### Search Criteria
 
 1. Your search will look for *Senders* that have an email address in the buttercupgames domain but are NOT using the 10.0.0.0/8 incoming IP address (Result 1).
+
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND NOT incoming_address="10.0.0.0/8"`
+
 ![this_is_it](images/not_in_range.png)
 
 2. The inputs from Result 1 are used in the search to look at the dates for the earliest and latest emails.  If the earliest we have seen an incoming IP address was *within the last day* of our search period (1/4/2017 - 2/1/2017), it means this is the first time we've seen the IP address, and it may qualify as anomalous (Result 2).
