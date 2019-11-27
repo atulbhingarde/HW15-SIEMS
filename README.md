@@ -74,7 +74,9 @@ The exercise will require that you also learn some **new** Splunk functions. You
 
   sourcetype=access_* (status=4* OR status=5*) | stats count by status
 
-##### `source="access_30DAY.log" host="cyber-security-ubuntu" sourcetype="access_combined_wcookie" status="4*" OR status="5*"`
+##### 
+
+`source="access_30DAY.log" host="cyber-security-ubuntu" sourcetype="access_combined_wcookie" status="4*" OR status="5*"`
 
 ![this_is_it](images/access_log_400_500.png)
 
@@ -132,7 +134,7 @@ The search has three parts:
  * Hint: This section uses a `wildcard` and `relational operator`.
 
  * Try it in Splunk.
-
+ 
  `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"`
 
 ![this_is_it](images/selected_1.png)
@@ -150,7 +152,7 @@ The search has three parts:
 	* Check the earliest time value = `1483511846` at https://www.epochconverter.com/
 	 
 	
-	`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"| stats earliest(time) AS mtime by incoming_address | convert ctime(mtime)`
+`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender="*@buttercupgames.com" AND incoming_address!="10.*"| stats earliest(time) AS mtime by incoming_address | convert ctime(mtime)`
 	
 ![this_is_it](images/selected_2.png)
 
@@ -185,10 +187,11 @@ Now look at the results and collect information for the incident report.
 *  What is the **Time** of the event?
 
 	
-*  Where there any **Attachments**?
+*  Where there any **Attachments**
+
 `source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" Sender=*@buttercupgames.com AND incoming_address != "10.0.0.0/8"  incoming_address="74.207.253.34"`
 
-![this is it](images/incidence_1.png)
+![this_is_it](images/incidence_1.png)
 
 `_** there is no attachment to the email in the above incidence **_`
 	
@@ -224,7 +227,7 @@ Configure the alert as follows:
 
 	* Severity = `Critical`
 
-* `Save` the Aler
+* `Save` the Alert
 
 ### View the Alert
 
@@ -244,6 +247,6 @@ Configure the alert as follows:
 
 * Disable the Alert after 10 entries.
 
-![alert in action](images/disable_alert_after_10.png)
+![alert_in_action](images/disable_alert_after_10.png)
 
 `Congratulations ....Homework Complete!`
