@@ -12,7 +12,7 @@ The buttercupgames domain name is **buttercupgames.com** (e.g., t1578@buttercupg
 
 ![this_is_it](images/buttercupgames.png)
 
-### Your Goal ß
+### Your Goal
 
 Find possible **anomalies** that may indicate a phishing attack.
 
