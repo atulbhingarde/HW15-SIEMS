@@ -20,7 +20,7 @@ Find possible **anomalies** that may indicate a phishing attack.
 
 1. Your search will look for *Senders* that have an email address in the buttercupgames domain but are NOT using the 10.0.0.0/8 incoming IP address (Result 1).
 
-`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Recipient="*buttercupgames.com" AND NOT incoming_address="10.0.0.0/8"`
+`source="buttercupgames_email_log.csv" host="cyber-security-ubuntu" sourcetype="csv" Senderß="*buttercupgames.com" AND NOT incoming_address="10.0.0.0/8"`
 
 ![this_is_it](images/not_in_range.png)
 
